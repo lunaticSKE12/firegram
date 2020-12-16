@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 
 const UploadForm = () => {
+  // Set state selected file and error
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
 
+  // Type of file
   const types = ['image/png', 'image/jpeg'];
 
+  // Handler selected file
   const changeHandler = (e) => {
     let selected = e.target.files[0];
 
@@ -20,7 +23,11 @@ const UploadForm = () => {
 
   return (
     <form>
-      <input type="file" onChange={changeHandler} />
+      <label>
+        <input type="file" onChange={changeHandler} />
+        <span>+</span>
+      </label>
+
       <div className="output">
         {error && <div className="error">{error}</div>}
         {file && <div>{file.name}</div>}
